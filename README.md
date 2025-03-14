@@ -26,7 +26,7 @@ Here is a simple showcase:
   > Even though this documentation talks about mutliple devices, I don't have any other devices than The Handy to test with, but it should work with any one-axis stroker device.
 - Because of Bluetooth latency, fast scripts can have unexpected behavior.
 - This app is not designed to render properly on mobile.
-- 
+
 ## How to connect a device
 
 ### From Intiface Central
