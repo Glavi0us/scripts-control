@@ -146,6 +146,19 @@ When everything is set up and it's time for the show, go to the Player page and 
 
 The player allows you to play a local video with an optional sync script.
 
+The main chart displays the currently played track(s) and can be controlled by:
+
+- Panning by clicking and dragging left/right or through the seek bar.
+- Zooming via scroll up/down.
+- Changing the current playback position by simply clicking on the chart.
+- Resetting everything with the top right button.
+
+> You can also turn off chart visibility with the top right button if you find the chart distracting.
+
+> Note that changing the current playback position will also change the playback video.
+
+<p align="center"><img src="./readme/assets/MainChartControls.gif" width="80%" /> </p>
+
 ## Export / import (save your config for next use or sharing :heart:)
 
 As the application does not save any data to the server, data will be stored in your browser's cache and will be restored at your next visit.
