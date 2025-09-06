@@ -1,5 +1,5 @@
 # Script Control
- 
+
 ➡️➡️➡️<a href="https://scriptscontrol.web.app/" target="_blank">Link to the web app</a>
 
 :warning: _You need to download and use [Intiface Central](https://intiface.com/central/)<img src="https://intiface.com/images/intiface-central.png" width="64"/> to connect your devices through Bluetooth._
@@ -158,6 +158,52 @@ The main chart displays the currently played track(s) and can be controlled by:
 > Note that changing the current playback position will also change the playback video.
 
 <p align="center"><img src="./readme/assets/MainChartControls.gif" width="80%" /> </p>
+
+## Track Editor
+
+The **Track Editor** allows you to create and fine-tune patterns directly on a timeline.  
+You can add, move, or delete points, zoom and pan the view, and optionally snap points to a grid for precise editing.
+
+This feature is still **work in progress**, but already provides a powerful way to make adjustments to existing tracks or design new ones.
+
+<p align="center"><img src="./readme/assets/TrackEditorExample.png" width="80%" /></p>
+
+### Basic actions
+
+- **Add a point** → click anywhere on the chart.  
+- **Move a point** → drag and drop it (snaps to grid if enabled).  
+- **Delete a point** → double-click the point.  
+- **Pan** → click and drag on the background.  
+- **Zoom** → scroll with the mouse wheel.  
+- **Reset view** → restore the default zoom/pan range.
+
+> Tip: if your first point is placed before `t=0`, the chart will automatically pan so that **zero aligns with your click**.
+
+### Snapping to grid
+
+You can enable **Snap to Grid** in the editor toolbar:
+
+- **Snap X (ms):** step for time axis (e.g. 100 → 0.1s intervals).  
+- **Snap Y (%):** step for position axis (e.g. 5 → increments of 0.05).  
+
+When enabled, new or dragged points will automatically align with the nearest grid intersection.
+
+### Tooltips & values
+
+Hovering over a point shows:
+
+- **Time** in a compact format: `1.2s`
+- **Position** as a percentage (0–100%).
+
+### Current limitations
+
+- Multi-selection, copy/paste are not implemented.  
+- No support for segment easing curves (direct point editing only).  
+
+### Best practices
+
+- Keep a minimum of **100–150ms** between points for smoother device motion.  
+- Use **Snap** to draft structure, then disable it for fine-tuning.  
 
 ## Export / import (save your config for next use or sharing :heart:)
 
