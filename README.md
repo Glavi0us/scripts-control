@@ -140,6 +140,32 @@ If a video is loaded, pausing the playlist will also pause the video. Resuming t
 
 Keybindings can be set by the playlist menu or by the settings page.
 
+## Other Settings
+
+### Device constraints
+
+Normalize tracks so they respect device and BLE (Bluetooth) limits, without stretching time. When enabled in Settings, constraints are applied to all playlist scripts right before commands are buffered.
+
+Defaults values are set to match with The Handy.
+- Physical stroke length: total travel in mm (e.g., 110).
+- Max speed: device max speed in mm/s (used to cap slope).
+- Min speed: device min usable speed in mm/s (used to detect slow segments).
+- Min interval: minimum time between kept commands (ms).
+- Min duration: minimum duration of a movement (ms).
+- Deadband: ignore tiny value changes below this percent (UI in %).
+- Vibration mode: handling for slow, non‑flat segments.
+  - Off: nothing added.
+  - Steps: split the slope into small steps at a configurable frequency (1–10 Hz).
+  - Oscillation: add a small zig‑zag along the slope with configurable frequency (≥1 Hz) and amplitude (5–20%).
+    
+    <img src="./readme/assets/Slow.png" width="20%" /> will give  <img src="./readme/assets/Slow_oscillation.png" width="20%" /> with 2Hz and 10%
+
+
+Notes
+- No time dilation: timestamps are preserved; only values are filtered/adjusted.
+- Values are quantized to 1% to match device command granularity (0–100%).
+- Normalization reduces BLE backlog on fast scripts and makes slow parts feel more lively if desired.
+
 ## Player
 
 When everything is set up and it's time for the show, go to the Player page and enjoy.
