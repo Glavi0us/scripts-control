@@ -142,29 +142,33 @@ Keybindings can be set by the playlist menu or by the settings page.
 
 ## Other Settings
 
-### Device constraints
+### Player buffering size
 
-Normalize tracks so they respect device and BLE (Bluetooth) limits, without stretching time. When enabled in Settings, constraints are applied to all playlist scripts right before commands are buffered.
+When a track reaches its last ten seconds of playback, Script Control switches to a prepared buffer so playback stays smooth. You can tweak the buffer size between 1 minute and 24 hours in the settings panel; higher values may impact performance. This buffer is skipped for tracks synchronised with external media.
 
-Defaults values are set to match with The Handy.
-- Physical stroke length: total travel in mm (e.g., 110).
-- Max speed: device max speed in mm/s (used to cap slope).
-- Min speed: device min usable speed in mm/s (used to detect slow segments).
-- Min interval: minimum time between kept commands (ms).
-- Min duration: minimum duration of a movement (ms).
-- Deadband: ignore tiny value changes below this percent (UI in %).
-- Vibration mode: handling for slow, non‑flat segments.
-  - Off: nothing added.
-  - Steps: split the slope into small steps at a configurable frequency (1–10 Hz).
-  - Oscillation: add a small zig‑zag along the slope with configurable frequency (≥1 Hz) and amplitude (5–20%).
-    
-    <img src="./readme/assets/Slow.png" width="20%" /> will give  <img src="./readme/assets/Slow_oscillation.png" width="20%" /> with 2Hz and 10%
+### Amplitude control
 
+Tweak the intensity of every movement in real time directly from the Player (and the Controller window).  
+The amplitude slider scales the difference between the current command and the next one:
 
-Notes
-- No time dilation: timestamps are preserved; only values are filtered/adjusted.
-- Values are quantized to 1% to match device command granularity (0–100%).
-- Normalization reduces BLE backlog on fast scripts and makes slow parts feel more lively if desired.
+- `0%` → the device stays still (flat line).  
+- `100%` → original script amplitude.  
+- `>100%` → amplified strokes, keeping timestamps intact.
+
+Changes are applied instantly while you drag the slider and are mirrored on the controller UI.  
+The chart overlays the adjusted (played) track on top of the original so you can see the impact before it reaches the device.
+
+<p align="center"><img src="./readme/assets/Amplitude.gif" width="80%" /></p>
+
+#### Slow segments override
+
+Flip the `Slow Segments` toggle to add life to gentle slopes. The panel collapses into a compact summary but expands on demand to expose:
+
+- `Detection (%/s)`: threshold that defines when a slope is considered "slow". Lower values capture more segments; higher values limit the effect to very flat portions.
+- `Frequency (Hz)`: how often steps or oscillations are injected (1-5 Hz).
+- `Strength (%)`: amplitude of oscillation (only for the `Oscillation` mode, 1-10 %).
+
+The effect respects playback speed. For example, slowing playback to `0.1x` multiplies the number of injected oscillations proportionally, while speeding up reduces them.
 
 ## Player
 
@@ -240,3 +244,4 @@ But if you want multiple presets or share your content, you can use the export f
 :warning::warning::warning: Importing a `.scriptscontrol` file will erase all the current data!
 
 If you want a quick play, you can download this file that contain datas used for this readme <a id="raw-url" href="/readme/assets/Example.scritpscontrol">Example.scritpscontrol</a>
+
